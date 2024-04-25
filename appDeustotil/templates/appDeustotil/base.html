@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Gestión de mantenimiento de equipos{% endblock %}</title><!--MIRAR QUE PONER AQUI-->
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav class="nav">
+            <div class="nav-branding">
+                <a href="{% url 'index' %}">
+                    <!-- <img src="{% static 'images/logo.png' %}" alt="logo"> Buscar una foto para poner, carpeta ya creada -->
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-menu-item"><a href="{% url 'index' %}">Inicio</a></li>
+                <li class="nav-menu-item"><a href="{% url 'index_proyectos' %}">Proyectos</a></li>
+                <li class="nav-menu-item"><a href="{% url 'index_tareas' %}">Tareas</a></li>
+                <li class="nav-menu-item"><a href="{% url 'index_empleados' %}">Empleados</a></li>
+                <li class="nav-menu-item"><a href="{% url 'index_clientes' %}">Clientes</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="content" class="main-container">
+            {% block contenido %}{% endblock %}
+        </div>
+    </main>
+    <footer>
+        <div>
+            <nav class="nav">
+                <div class="nav-branding">
+                    <a href="{% url 'index' %}">
+                        <!-- <img src="{% static 'images/logo.png' %}" alt="logo">Buscar una foto para poner, carpeta ya creada -->
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-menu-item"><a href="{% url 'index' %}">Inicio</a></li>
+                <li class="nav-menu-item"><a href="{% url 'index_proyectos' %}">Proyectos</a></li>
+                <li class="nav-menu-item"><a href="{% url 'index_tareas' %}">Tareas</a></li>
+                <li class="nav-menu-item"><a href="{% url 'index_empleados' %}">Empleados</a></li>
+                <li class="nav-menu-item"><a href="{% url 'index_clientes' %}">Clientes</a></li>
+                </ul>
+            </nav>
+            <p id="copyright">&copy; Ingenieria Web - Grupo3 2024 </p>
+        </div>
+        <div class="contact-info">
+            <h3>Deustotil  </h3>
+            <div class="info">
+                <!-- <img src="{% static 'images/img_puntero.png' %}" alt="puntero maps" class="tel-loc">Buscar una foto para poner, carpeta ya creada -->
+                <p>Calle La Paz , 33, 01001 Vitoria, Alava</p>
+            </div>
+            <div class="info">
+                <!-- <img src="{% static 'images/img_tel.png' %}" alt="telefono" class="tel-loc">Buscar una foto para poner, carpeta ya creada -->
+                <p>945 932 472</p>
+            </div>
+            <h3>Deustotil  Vitoria</h3>
+            <div class="info">
+                <!-- <img src="{% static 'images/img_puntero.png' %}" alt="puntero maps" class="tel-loc">Buscar una foto para poner, carpeta ya creada -->
+                <p>CallePeru, 56, 01094 Vitoria, Álava</p>
+            </div>
+            <div class="info">
+                <!-- <img src="{% static 'images/img_tel.png' %}" alt="telefono" class="tel-loc">Buscar una foto para poner, carpeta ya creada -->
+                <p>945 037 323</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

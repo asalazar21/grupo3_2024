@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block titulo %}Inicio{% endblock %}
+
+{% block contenido %}
+    <h2>Listado de proyectos</h2>
+    {% if lista_proyectos %}
+        <table class="tablas">
+            <thead>
+                <tr><!--mirar si hay que quitar alguna-->
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Fecha de inicio </th>
+                    <th>Fecha fin </th>
+                    <th>Presupuesto</th>
+                    <th>Tareas a realizar</th>
+                    <th>Responsable</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for proyecto in lista_proyectos %}
+                    <tr><!--mirar si hay que quitar alguna-->
+                        <td>
+                            <a href="{% url 'detail_proyecto' pk=proyecto.id %}">{{ proyecto.nombre }}</a><!--mirar si poner en detail este o on-->
+                        </td>
+                        <td>{{ proyecto.descripcion }}</td>
+                        <td>{{ proyecto.fecha_inicio }}</td>
+                        <td>{{ proyecto.fecha_fin }}</td>
+                        <td>{{ proyecto.fecha_fin }}</td>
+                        <td>{{ proyecto.presupuesto }}</td>
+                        <td>{{ proyecto.tarea_a_realizar }}</td>
+                        <td>{{ proyecto.empleado.nombre }}</td> <!--mirar si es asi-->
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="centrado">
+            <a href="{% url 'index_proyectos' %}" class="btn">Ver más</a>
+        </div>
+    {% else %}
+        <p>No hay proyectos creados.</p>
+    {% endif %}
+
+
+
+    <h2>Listado de tareas</h2>
+    {% if lista_tareas %}
+        <table class="tablas">
+            <thead>
+                <tr><!--mirar si hay que quitar alguna-->
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de fin</th>
+                    <th>Responsable</th>
+                    <th>Nivel de prioridad</th>
+                    <th>Esado</th>
+                    <th>Notas adicionales</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tarea in lista_tareas %}
+                    <tr><!--mirar si hay que quitar alguna-->
+                        <td>{{ tarea.nombre }}</td>
+                        <td>
+                            <a href="{% url 'detail_tarea' pk=tarea.id %}">{{ tarea.descripcion }}</a><!--mirar si ooner en detail descripccion o que-->
+                        </td>
+                        <td>{{ tarea.fecha_inicio }}</td>
+                        <td>{{ tarea.fecha_fin }}</td>
+                        <td>{{ tarea.responsable }}</td>
+                        <td>{{ tarea.nivel_prioridad }}</td>
+                        <td>{{ tarea.estado_tarea }}</td>
+                        
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="centrado">
+            <a href="{% url 'index_tareas' %}" class="btn">Ver más</a>
+        </div>
+    {% else %}
+        <p>No hay tareas creadas.</p>
+    {% endif %}
+
+
+    <h2>Listado de empleados</h2>
+    {% if lista_empleados %}
+        <table class="tablas">
+            <thead>
+                <tr><!--mirar si hay que quitar alguna-->
+                    <th>DNI</th>
+                    <th>Nombre y apellidos</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Equipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for empleado in lista_empleados %}
+                    <tr><!--mirar si hay que quitar alguna-->
+                        <td>{{ empleado.dni }}</td>
+                        <td>
+                            <a href="{% url 'detail_empleado' pk=empleado.id %}">{{ empleado.nombre }} {{ empleado.apellidos }}</a>
+                        </td>
+                        <td>{{ empleado.email }}</td>
+                        <td>{{ empleado.telefono }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="centrado">
+            <a href="{% url 'index_empleados' %}" class="btn">Ver más</a>
+        </div>
+    {% else %}
+        <p>No hay empleados creados.</p>
+    {% endif %}
+
+
+    <h2>Listado de clientes</h2>
+    {% if lista_clientes %}
+        <table class="tablas">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Dirección</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in lista_clientes %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'detail_cliente' pk=cliente.id %}">{{ cliente.nombre }}</a>
+                        </td>
+                        <td>{{ cliente.telefono }}</td>
+                        <td>{{ cliente.direccion }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="centrado">
+            <a href="{% url 'index_clientes' %}" class="btn">Ver más</a>
+        </div>
+    {% else %}
+        <p>No hay clientes creados.</p>
+    {% endif %}
+
+{% endblock %}
