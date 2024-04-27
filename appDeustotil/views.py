@@ -1,14 +1,10 @@
 from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render
-from .models import Proyecto, Tarea, Empleado, Cliente, EstadoTarea, Prioridad, Responsable
+from .models import Proyecto, Tarea, Empleado, Cliente
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView
 from django.views.generic.edit import CreateView
-from .forms import EmpleadoForm, ProyectoForm, TareaForm, ClienteForm, PrioridadForm, ResponsableForm, EstadoTareaForm
+from .forms import EmpleadoForm, ProyectoForm, TareaForm, ClienteForm
 
-# Create your views here.
 
 
 class IndexListView(ListView):
@@ -26,7 +22,7 @@ class TareaListView(ListView):
     model = Tarea
     template_name = 'index_tareas.html'  
     context_object_name = 'lista_tareas'
-    # queryset = Proyecto.objects.order_by('nombre')  #¿poner aqui?
+    queryset = Tarea.objects.order_by('nombre')
     paginate_by = 10
 
 
@@ -52,9 +48,9 @@ class TareaCreateView(CreateView):
 
 class TareaUpdateView(UpdateView):
     model = Tarea
-    template_name = 'appGestionMantenimientoEquipos/tarea_edit.html'
+    template_name = 'appDeustotil/tarea_edit.html'
     success_url = reverse_lazy('index_tareas')
-    fields = ['nombre', 'descripcion', 'fecha_inicio', 'fecha_fin', 'responsable', 'nivel_prioridad', 'estado_tarea']
+    fields = ['nombre', 'descripcion', 'fecha_inicio', 'fecha_fin', 'responsable', 'nivel_prioridad', 'estado_tarea', 'notas']
 
 
 # ------------------
@@ -64,8 +60,8 @@ class ProyectoListView(ListView):
     model = Proyecto
     template_name = 'index_proyectos.html'  
     context_object_name = 'lista_proyectos' 
+    queryset = Proyecto.objects.order_by('nombre')
     paginate_by = 10
-    # queryset = Proyecto.objects.order_by('nombre')  #¿poner aqui?
 
 
 
@@ -91,7 +87,7 @@ class ProyectoCreateView(CreateView):
 
 class ProyectoUpdateView(UpdateView):
     model = Proyecto
-    template_name = 'appGestionMantenimientoEquipos/proyecto_edit.html'
+    template_name = 'appDeustotil/proyecto_edit.html'
     success_url = reverse_lazy('index_proyectos')
     fields = ['nombre', 'descripcion', 'fecha_inicio', 'fecha_fin', 'presupuesto', 'cliente', 'tarea_a_realizar', 'responsable']
 
@@ -102,7 +98,6 @@ class EmpleadoListView(ListView):
     template_name = 'index_empleados.html'  
     context_object_name = 'lista_empleados'
     paginate_by = 10
-    # queryset = Proyecto.objects.order_by('dni')  #¿poner aqui? o 'dni'?
 
 
 class EmpleadoDetailView(DetailView):
@@ -127,7 +122,7 @@ class EmpleadoCreateView(CreateView):
 
 class EmpleadoUpdateView(UpdateView):
     model = Empleado
-    template_name = 'appGestionMantenimientoEquipos/empleado_edit.html'
+    template_name = 'appDeustotil/empleado_edit.html'
     success_url = reverse_lazy('index_empleados')
     fields = ['dni', 'nombre', 'apellidos', 'email', 'telefono']
 
@@ -136,7 +131,7 @@ class EmpleadoUpdateView(UpdateView):
 
 class ClienteListView(ListView):
     model = Cliente
-    template_name = 'index_proveedores.html'
+    template_name = 'index_clientes.html'
     queryset = Cliente.objects.order_by('nombre')
     context_object_name = 'lista_clientes'
     paginate_by = 10
@@ -161,6 +156,6 @@ class ClienteCreateView(CreateView):
 
 class ClienteUpdateView(UpdateView):
     model = Cliente
-    template_name = 'appGestionMantenimientoEquipos/cliente_edit.html'
+    template_name = 'appDeustotil/cliente_edit.html'
     success_url = reverse_lazy('index_clientes')
-    fields = ['nombre','telefono','direccion',]
+    fields = ['nombre','telefono','direccion']
