@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block titulo %} Detalle del empleado {% endblock %}
+{% block contenido %}
+    {% if empleado %}
+        <div class="detalle-model">
+            <h2>Datos del empleado</h2>
+            <div class="detalle-model-info">
+                <div>
+                    <p>DNI:</p>
+                    <p>{{ empleado.dni }}</p>
+                </div>
+                <div>
+                    <p>Nombre:</p>
+                    <p>{{ empleado.nombre }}</p>
+                </div>
+                <div>
+                    <p>Apellidos:</p>
+                    <p>{{ empleado.apellidos }}</p>
+                </div>
+                <div>
+                    <p>Email:</p>
+                    <p>{{ empleado.email }}</p>
+                </div>
+                <div>
+                    <p>Teléfono:</p>
+                    <p>{{ empleado.telefono }}</p>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>No existe este empleado.</p>
+    {% endif %}
+{% endblock %}

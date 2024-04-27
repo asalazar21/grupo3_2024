@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block titulo %} Detalle del cliente {% endblock %}
+{% block contenido %}
+    {% if cliente %}
+        <div class="detalle-model">
+            <h2>Datos del cliente</h2>
+            <div class="detalle-model-info">
+                <div>
+                    <p>Nombre:</p>
+                    <p>{{ cliente.nombre }}</p>
+                </div>
+                <div>
+                    <p>Teléfono:</p>
+                    <p>{{ cliente.telefono }}</p>
+                </div>
+                <div>
+                    <p>Direccion:</p>
+                    <p>{{ cliente.direccion }}</p>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>No existe este cliente.</p>
+    {% endif %}
+{% endblock %}

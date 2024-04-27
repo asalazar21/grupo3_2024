@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block titulo %} Detalle del proyecto {% endblock %}
+{% block contenido %}
+    {% if proyecto %}
+        <div class="detalle-model">
+            <h2>Datos del proyecto</h2>
+            <div class="detalle-model-info">
+                <div>
+                    <p>{{ proyecto.nombre }}</p>
+                </div>
+                <div>
+                    <p>Descripción:</p>
+                    <p>{{ proyecto.descripcion }}</p>
+                </div>
+                <div>
+                    <p>Fecha de inicio:</p>
+                    <p>{{ proyecto.fecha_inicio }}</p>
+                </div>
+                <div>
+                    <p>Fecha de fin:</p>
+                    <p>{{ proyecto.fecha_fin }}</p>
+                </div>
+                <div>
+                    <p>Presupuestp:</p>
+                    <p>{{ proyecto.presupuesto }}</p>
+                </div>
+                <div>
+                    <p>Cliente:</p>
+                    <p><a href="{% url 'detail_cliente' pk=proyecto.cliente.id %}">{{ proyecto.cliente.nombre }}</a></p> <!--comprobar xo creo que esta bien-->
+                </div>
+
+                <div>
+                    <p>Tareas a realizar:</p>
+                    <p>{{ proyecto.tarea_a_realizar }}</p>
+                </div>
+                <div>
+                    <p>Responsable:</p>
+                    <p>{{ proyecto.responsable.nombre }}</p><!--comprobar xo creo que esta bien yy sino con url como aririba-->
+                </div>
+            
+            </div>
+        </div>
+    {% else %}
+        <p>No existe este proyecto.</p>
+    {% endif %}
+{% endblock %}

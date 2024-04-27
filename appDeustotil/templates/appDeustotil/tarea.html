@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block titulo %} Detalle de la tarea {% endblock %}
+{% block contenido %}
+    {% if tarea %}
+        <div class="detalle-model">
+            <h2>Datos de la tarea</h2>
+            <div class="detalle-model-info">
+                <div>
+                    <p>{{ tarea.nombre }}</p>
+                </div>
+                <div>
+                    <p>Descripción:</p>
+                    <p>{{ tarea.descripcion }}</p>
+                </div>
+                <div>
+                    <p>Fecha inicio:</p>
+                    <p>{{ tarea.fecha_inicio }}</p>
+                </div>
+                <div>
+                    <p>Fecha fin:</p>
+                    <p>{{ tarea.fecha_fin }}</p>
+                </div>
+                <div>
+                    <p>Responsable:</p>
+                    <p><a href="{% url 'detail_empleado' pk=tarea.empleado.id %}">{{ tarea.empleado.nombre }}</a></p> <!--mirar si poner asi o nooo-->
+                </div>
+                <div>
+                    <p>Nivel de prioridad:</p>
+                    <p>{{ tarea.nivel_prioridad }}</p>
+                </div>
+                <div>
+                    <p>Estado de la tarea:</p>
+                    <p>{{ tarea.estado_tarea }}</p>
+                </div>
+                <div>
+                    <p>Notas:</p>
+                    <p>{{ tarea.notas }}</p>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>No existe esta tarea.</p>
+    {% endif %}
+{% endblock %}
