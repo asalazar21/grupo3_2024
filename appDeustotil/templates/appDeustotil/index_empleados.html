@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block titulo %}Listado de empleados{% endblock %}
+
+{% block contenido %}
+  <h2>Listado de empleados</h2>
+  <a href="{% url 'create_empleados' %}" class="create">Crear nuevo empleado</a>
+  {% if lista_empleados %}
+    <table class="tablas">
+      <thead>
+        <tr>
+          <th>DNI</th>
+          <th>Nombre y apellidos</th>
+          <th>Email</th>
+          <th>Teléfono</th>
+          <th>Accion</th><!--mirir si o no-->
+        </tr>
+      </thead>
+      <tbody>
+        {% for empleado in lista_empleados %}
+          <tr>
+            <td>{{ empleado.dni }}</td>
+            <td><a href="{% url 'detail_empleado' pk=empleado.id %}">{{ empleado.nombre }} {{ empleado.apellidos }}</a></td>
+            <td>{{ empleado.email }}</td>
+            <td>{{ empleado.telefono }}</td>
+            <td>
+              <a href="{% url 'edit_empleado' pk=empleado.id %}" class="btn-link">Editar</a>
+              <a href="{% url 'delete_empleado' pk=empleado.id %}" class="btn-link btn-link-red">Borrar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="pagination">
+      <span class="step-links">
+        {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; Inicio</a>
+          <a href="?page={{ page_obj.previous_page_number }}">&lsaquo; Anterior</a>
+        {% endif %}
+
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">Siguiente &rsaquo;</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">Ultimo &raquo;</a>
+        {% endif %}
+      </span>
+    </div>
+    <div class="centrado">
+      <span class="current-page">
+        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+      </span>
+    </div> 
+  {% else %}
+    <p>No hay empleados creados.</p>
+  {% endif %}
+{% endblock %}
