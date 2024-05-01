@@ -10,17 +10,19 @@
       <thead>
         <tr>
           <th>DNI</th>
-          <th>Nombre y apellidos</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
           <th>Email</th>
           <th>Teléfono</th>
-          <th>Accion</th><!--mirir si o no-->
+          <th>Accion</th>
         </tr>
       </thead>
       <tbody>
         {% for empleado in lista_empleados %}
           <tr>
-            <td>{{ empleado.dni }}</td>
-            <td><a href="{% url 'detail_empleado' pk=empleado.id %}">{{ empleado.nombre }} {{ empleado.apellidos }}</a></td>
+            <td><a href="{% url 'detail_empleado' pk=empleado.id %}">{{ empleado.dni }}</a></td>
+            <td>{{ empleado.nombre }}</td>
+            <td>{{ empleado.apellidos }}</td>
             <td>{{ empleado.email }}</td>
             <td>{{ empleado.telefono }}</td>
             <td>

@@ -4,7 +4,7 @@
 
 {% block contenido %}
     <h2>Listado de tarea</h2>
-    <a href="{% url 'create_tarea' %}" class="create">Crear nueva tarea</a>
+    <a href="{% url 'create_tareas' %}" class="create">Crear nueva tarea</a>
     {% if lista_tareas %}
         <table class="tablas">
             <thead>
@@ -16,19 +16,23 @@
                     <th>Responsable</th>
                     <th>Nivel de prioridad</th>
                     <th>Estado de la tarea</th>
+                    <th>Notas</th>
+                    <th>Accion</th>
                 </tr>
             </thead>
             <tbody>
                 {% for tarea in lista_tareas %}
                     <tr>
-                        <td>{{ tarea.nombre }}</td>
-                        <td><a href="{% url 'detail_tarea' pk=tarea.id %}">{{ tarea.descripcion }}</a></td>
+                        <td> 
+                            <a href="{% url 'detail_tarea' pk=tarea.id %}">{{ tarea.nombre }}</a>
+                        </td>
+                        <td>{{ tarea.descripcion }}</td>
                         <td>{{ tarea.fecha_inicio }}</td>
                         <td>{{ tarea.fecha_fin }}</td>
-                        <td>{{ tarea.responsable }}</td><!--comprobar-->
+                        <td>{{ tarea.responsable }}</td>
                         <td>{{ tarea.nivel_prioridad }}</td>
                         <td>{{ tarea.estado_tarea }}</td>
-                        <!-- <td><a href="{% url 'detail_empleado' pk=ticket.empleado.id %}">{{ tarea.empleado.nombre }}</a></td> --><!--mirar si si o no-->
+                        <td>{{ tarea.notas }}</td>
                         <td>
                             <a href="{% url 'edit_tarea' pk=tarea.id %}" class="btn-link">Editar</a>
                             <a href="{% url 'delete_tarea' pk=tarea.id %}" class="btn-link btn-link-red">Borrar</a>

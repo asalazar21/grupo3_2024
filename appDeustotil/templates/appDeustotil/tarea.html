@@ -22,7 +22,7 @@
                 </div>
                 <div>
                     <p>Responsable:</p>
-                    <p><a href="{% url 'detail_empleado' pk=tarea.empleado.id %}">{{ tarea.empleado.nombre }}</a></p> <!--mirar si poner asi o nooo-->
+                    <p><a href="{% url 'detail_empleado' pk=tarea.empleado.id %}">{{ tarea.empleado.nombre }} {{ tarea.empleado.apellidos }}</a></p>
                 </div>
                 <div>
                     <p>Nivel de prioridad:</p>

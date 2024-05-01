@@ -26,16 +26,16 @@
                 </div>
                 <div>
                     <p>Cliente:</p>
-                    <p><a href="{% url 'detail_cliente' pk=proyecto.cliente.id %}">{{ proyecto.cliente.nombre }}</a></p> <!--comprobar xo creo que esta bien-->
+                    <p><a href="{% url 'detail_cliente' pk=proyecto.cliente.id %}">{{ proyecto.cliente.nombre }}</a></p>
                 </div>
 
                 <div>
                     <p>Tareas a realizar:</p>
-                    <p>{{ proyecto.tarea_a_realizar }}</p>
+                    <p><a href="{% url 'detail_tarea' pk=proyecto.tarea.id %}">{{ proyecto.tarea.nombre }}</a></p>
                 </div>
                 <div>
                     <p>Responsable:</p>
-                    <p>{{ proyecto.responsable.nombre }}</p><!--comprobar xo creo que esta bien yy sino con url como aririba-->
+                    <p><a href="{% url 'detail_empleado' pk=proyecto.empleado.id %}">{{ proyecto.empleado.nombre }}</a></p>
                 </div>
             
             </div>

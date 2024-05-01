@@ -4,8 +4,8 @@
 
 {% block contenido %}
 <h2>Listado de proyectos</h2>
-<a href="{% url 'create_proyecto' %}" class="create">Crear nuevo proyecto</a>
-{% if proyectos %}
+<a href="{% url 'create_proyectos' %}" class="create">Crear nuevo proyecto</a>
+{% if lista_proyectos %}
 <table class="tablas">
     <thead>
         <tr>
@@ -16,18 +16,21 @@
             <th>Presupuesto</th>
             <th>Cliente</th>
             <th>Tarea a realizar</th>
+            <th>Responsable</th>
+            <th>Accion</th>
         </tr>
     </thead>
     <tbody>
         {% for proyecto in lista_proyectos %}
-        <tr><!--mirar si hay que poner alguni mas en detail o si esta bien ese-->
+        <tr>
             <td>{{ proyecto.nombre }}</td>
             <td>{{ proyecto.descripcion }}</td>
             <td>{{ proyecto.fecha_inicio }}</td>
             <td>{{ proyecto.fecha_fin }}</td>
             <td>{{ proyecto.presupuesto }}</td>
-            <td>{{ proyecto.fecha_puesta_marcha }}</td>
             <td><a href="{% url 'detail_cliente' pk=proyecto.cliente.id %}">{{ proyecto.cliente.nombre }}</a></td>
+            <td><a href="{% url 'detail_tarea' pk=proyecto.tarea.id %}">{{ proyecto.tarea.nombre }}</a></td>
+            <td><a href="{% url 'detail_empleado' pk=proyecto.empleado.id %}">{{ proyecto.empleado.nombre }} {{ proyecto.empleado.apellidos }}</a></td>
             <td>
                 <a href="{% url 'edit_proyecto' pk=proyecto.id %}" class="btn-link">Editar</a>
                 <a href="{% url 'delete_proyecto' pk=proyecto.id %}" class="btn-link btn-link-red">Borrar</a>
