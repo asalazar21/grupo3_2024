@@ -50,7 +50,7 @@ class TareaUpdateView(UpdateView):
     model = Tarea
     template_name = 'appDeustotil/tarea_edit.html'
     success_url = reverse_lazy('index_tareas')
-    fields = ['nombre', 'descripcion', 'fecha_inicio', 'fecha_fin', 'responsable', 'nivel_prioridad', 'estado_tarea', 'notas']
+    fields = ['nombre', 'descripcion', 'fecha_inicio', 'fecha_fin', 'responsable', 'proyecto','nivel_prioridad', 'estado_tarea', 'notas']
 
 
 # ------------------
@@ -89,7 +89,7 @@ class ProyectoUpdateView(UpdateView):
     model = Proyecto
     template_name = 'appDeustotil/proyecto_edit.html'
     success_url = reverse_lazy('index_proyectos')
-    fields = ['nombre', 'descripcion', 'fecha_inicio', 'fecha_fin', 'presupuesto', 'cliente', 'tarea_a_realizar', 'responsable']
+    fields = ['nombre', 'descripcion', 'fecha_inicio', 'fecha_fin', 'presupuesto', 'cliente', 'responsable']
 
 # ------------------
 

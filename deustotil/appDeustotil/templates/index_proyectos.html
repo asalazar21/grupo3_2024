@@ -15,7 +15,6 @@
             <th>Fecha de fin</th>
             <th>Presupuesto</th>
             <th>Cliente</th>
-            <th>Tarea a realizar</th>
             <th>Responsable</th>
             <th>Accion</th>
         </tr>
@@ -29,8 +28,7 @@
             <td>{{ proyecto.fecha_fin }}</td>
             <td>{{ proyecto.presupuesto }}</td>
             <td><a href="{% url 'detail_cliente' pk=proyecto.cliente.id %}">{{ proyecto.cliente.nombre }}</a></td>
-            <td><a href="{% url 'detail_tarea' pk=proyecto.tarea.id %}">{{ proyecto.tarea.nombre }}</a></td>
-            <td><a href="{% url 'detail_empleado' pk=proyecto.empleado.id %}">{{ proyecto.empleado.nombre }} {{ proyecto.empleado.apellidos }}</a></td>
+            <td><a href="{% url 'detail_empleado' pk=proyecto.responsable.id %}">{{ proyecto.responsable.nombre }} {{ proyecto.responsable.apellidos }}</a></td>
             <td>
                 <a href="{% url 'edit_proyecto' pk=proyecto.id %}" class="btn-link">Editar</a>
                 <a href="{% url 'delete_proyecto' pk=proyecto.id %}" class="btn-link btn-link-red">Borrar</a>

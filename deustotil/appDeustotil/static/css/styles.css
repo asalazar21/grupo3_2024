@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #f8f8f5;
+}
+
+main {
+    flex-grow: 1;
+}
+
+h1,
+h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.centrado {
+    text-align: center;
+    margin: 1rem 0 1rem 0;
+}

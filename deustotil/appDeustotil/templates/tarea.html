@@ -22,7 +22,11 @@
                 </div>
                 <div>
                     <p>Responsable:</p>
-                    <p><a href="{% url 'detail_empleado' pk=tarea.empleado.id %}">{{ tarea.empleado.nombre }} {{ tarea.empleado.apellidos }}</a></p>
+                    <p><a href="{% url 'detail_empleado' pk=tarea.responsable.id %}">{{ tarea.responsable.nombre }} {{ tarea.responsable.apellidos }}</a></p>
+                </div>
+                <div>
+                    <p>Proyecto:</p>
+                    <p><a href="{% url 'detail_proyecto' pk=tarea.proyecto.id %}">{{ tarea.proyecto.nombre }}</a></p>
                 </div>
                 <div>
                     <p>Nivel de prioridad:</p>
