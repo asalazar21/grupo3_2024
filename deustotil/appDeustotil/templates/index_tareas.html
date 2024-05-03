@@ -3,8 +3,13 @@
 {% block titulo %}Listado de tareas{% endblock %}
 
 {% block contenido %}
-    <h2>Listado de tareas</h2>
-    <a href="{% url 'create_tareas' %}" class="create">Crear nueva tarea</a>
+    <div class="title-container">
+        <div></div>
+        <h2>Listado de tareas</h2>
+        <div class="title-container__btn">
+            <a href="{% url 'create_tareas' %}" class="btn btn-primary">Crear nueva tarea</a>
+        </div>
+    </div>
     {% if lista_tareas %}
         <table class="tablas">
             <thead>
@@ -33,9 +38,9 @@
                         <td>{{ tarea.nivel_prioridad }}</td>
                         <td>{{ tarea.estado_tarea }}</td>
                         <td>{{ tarea.notas }}</td>
-                        <td>
-                            <a href="{% url 'edit_tarea' pk=tarea.id %}" class="btn-link">Editar</a>
-                            <a href="{% url 'delete_tarea' pk=tarea.id %}" class="btn-link btn-link-red">Borrar</a>
+                        <td class="btn-tablas">
+                            <a href="{% url 'edit_tarea' pk=tarea.id %}" class="btn btn-secondary">Editar</a>
+                            <a href="{% url 'delete_tarea' pk=tarea.id %}" class="btn btn-danger">Borrar</a>
                         </td>
                     </tr>
                 {% endfor %}

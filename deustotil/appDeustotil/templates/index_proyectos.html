@@ -3,8 +3,13 @@
 {% block titulo %}Listado de proyectos{% endblock %}
 
 {% block contenido %}
-    <h2>Listado de proyectos</h2>
-    <a href="{% url 'create_proyectos' %}" class="create">Crear nuevo proyecto</a>
+    <div class="title-container">
+        <div></div>
+        <h2>Listado de proyectos</h2>
+        <div class="title-container__btn">
+            <a href="{% url 'create_proyectos' %}" class="btn btn-primary">Crear nuevo proyecto</a>
+        </div>
+    </div>   
     {% if lista_proyectos %}
         <table class="tablas">
             <thead>
@@ -29,9 +34,9 @@
                         <td>{{ proyecto.presupuesto }}</td>
                         <td><a href="{% url 'detail_cliente' pk=proyecto.cliente.id %}">{{ proyecto.cliente.nombre }}</a></td>
                         <td><a href="{% url 'detail_empleado' pk=proyecto.responsable.id %}">{{ proyecto.responsable.nombre }} {{ proyecto.responsable.apellidos }}</a></td>
-                        <td>
-                            <a href="{% url 'edit_proyecto' pk=proyecto.id %}" class="btn-link">Editar</a>
-                            <a href="{% url 'delete_proyecto' pk=proyecto.id %}" class="btn-link btn-link-red">Borrar</a>
+                        <td class="btn-tablas">
+                            <a href="{% url 'edit_proyecto' pk=proyecto.id %}" class="btn btn-secondary">Editar</a>
+                            <a href="{% url 'delete_proyecto' pk=proyecto.id %}" class="btn btn-danger">Borrar</a>
                         </td>
                     </tr>
                 {% endfor %}

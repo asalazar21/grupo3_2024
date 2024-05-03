@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
-{% block titulo %}Inicio{% endblock %}
+{% block titulo %}Gestión de proyectos{% endblock %}
 
 {% block contenido %}
-    <h2>Listado de proyectos</h2>
-    <div class="centrado">
-        <a href="{% url 'index_proyectos' %}" class="btn">Ver más</a>
+    <div class="title-container">
+        <div></div>
+        <h2>Listado de proyectos</h2>
+        <div class="title-container__btn">
+            <a href="{% url 'index_proyectos' %}" class="btn btn-secondary">Ver más</a>
+        </div>
     </div>
     {% if lista_proyectos %}
         <table class="tablas">
@@ -39,12 +42,12 @@
     {% else %}
         <p>No hay proyectos creados.</p>
     {% endif %}
-
-
-
-    <h2>Listado de tareas</h2>
-    <div class="centrado">
-        <a href="{% url 'index_tareas' %}" class="btn">Ver más</a>
+    <div class="title-container">
+        <div></div>
+        <h2>Listado de tareas</h2>
+        <div class="title-container__btn">
+            <a href="{% url 'index_tareas' %}" class="btn btn-secondary">Ver más</a>
+        </div>
     </div>
     {% if lista_tareas %}
         <table class="tablas">
@@ -82,11 +85,12 @@
     {% else %}
         <p>No hay tareas creadas.</p>
     {% endif %}
-
-
-    <h2>Listado de empleados</h2>
-    <div class="centrado">
-        <a href="{% url 'index_empleados' %}" class="btn">Ver más</a>
+    <div class="title-container">
+        <div></div>
+        <h2>Listado de empleados</h2>
+        <div class="title-container__btn">
+            <a href="{% url 'index_empleados' %}" class="btn btn-secondary">Ver más</a>
+        </div>
     </div>
     {% if lista_empleados %}
         <table class="tablas">
@@ -116,11 +120,12 @@
     {% else %}
         <p>No hay empleados creados.</p>
     {% endif %}
-
-
-    <h2>Listado de clientes</h2>
-    <div class="centrado">
-        <a href="{% url 'index_clientes' %}" class="btn">Ver más</a>
+    <div class="title-container">
+        <div></div>
+        <h2>Listado de clientes</h2>
+        <div class="title-container__btn">
+            <a href="{% url 'index_clientes' %}" class="btn btn-secondary">Ver más</a>
+        </div>
     </div>
     {% if lista_clientes %}
         <table class="tablas">
