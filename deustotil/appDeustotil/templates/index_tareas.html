@@ -24,14 +24,12 @@
             <tbody>
                 {% for tarea in lista_tareas %}
                     <tr>
-                        <td> 
-                            <a href="{% url 'detail_tarea' pk=tarea.id %}">{{ tarea.nombre }}</a>
-                        </td>
+                        <td><a href="{% url 'detail_tarea' pk=tarea.id %}">{{ tarea.nombre }}</a></td>
                         <td>{{ tarea.descripcion }}</td>
                         <td>{{ tarea.fecha_inicio }}</td>
                         <td>{{ tarea.fecha_fin }}</td>
-                        <td>{{ tarea.responsable }}</td>
-                        <td>{{ tarea.proyecto }}</td>
+                        <td><a href="{% url 'detail_empleado' pk=tarea.responsable.id %}">{{ tarea.responsable.nombre }} {{ tarea.responsable.apellidos }}</a></td>
+                        <td><a href="{% url 'detail_proyecto' pk=tarea.proyecto.id %}">{{ tarea.proyecto.nombre }}</a></td>
                         <td>{{ tarea.nivel_prioridad }}</td>
                         <td>{{ tarea.estado_tarea }}</td>
                         <td>{{ tarea.notas }}</td>
