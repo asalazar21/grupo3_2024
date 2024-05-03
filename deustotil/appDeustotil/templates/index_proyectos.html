@@ -3,59 +3,59 @@
 {% block titulo %}Listado de proyectos{% endblock %}
 
 {% block contenido %}
-<h2>Listado de proyectos</h2>
-<a href="{% url 'create_proyectos' %}" class="create">Crear nuevo proyecto</a>
-{% if lista_proyectos %}
-<table class="tablas">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Fecha de inicio</th>
-            <th>Fecha de fin</th>
-            <th>Presupuesto</th>
-            <th>Cliente</th>
-            <th>Responsable</th>
-            <th>Accion</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for proyecto in lista_proyectos %}
-        <tr>
-            <td><a href="{% url 'detail_proyecto' pk=proyecto.id %}">{{ proyecto.nombre }}</a></td>
-            <td>{{ proyecto.descripcion }}</td>
-            <td>{{ proyecto.fecha_inicio }}</td>
-            <td>{{ proyecto.fecha_fin }}</td>
-            <td>{{ proyecto.presupuesto }}</td>
-            <td><a href="{% url 'detail_cliente' pk=proyecto.cliente.id %}">{{ proyecto.cliente.nombre }}</a></td>
-            <td><a href="{% url 'detail_empleado' pk=proyecto.responsable.id %}">{{ proyecto.responsable.nombre }} {{ proyecto.responsable.apellidos }}</a></td>
-            <td>
-                <a href="{% url 'edit_proyecto' pk=proyecto.id %}" class="btn-link">Editar</a>
-                <a href="{% url 'delete_proyecto' pk=proyecto.id %}" class="btn-link btn-link-red">Borrar</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-        <a href="?page=1">&laquo; Inicio</a>
-        <a href="?page={{ page_obj.previous_page_number }}">&lsaquo; Anterior</a>
-        {% endif %}
+    <h2>Listado de proyectos</h2>
+    <a href="{% url 'create_proyectos' %}" class="create">Crear nuevo proyecto</a>
+    {% if lista_proyectos %}
+        <table class="tablas">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de fin</th>
+                    <th>Presupuesto</th>
+                    <th>Cliente</th>
+                    <th>Responsable</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for proyecto in lista_proyectos %}
+                    <tr>
+                        <td><a href="{% url 'detail_proyecto' pk=proyecto.id %}">{{ proyecto.nombre }}</a></td>
+                        <td>{{ proyecto.descripcion }}</td>
+                        <td>{{ proyecto.fecha_inicio }}</td>
+                        <td>{{ proyecto.fecha_fin }}</td>
+                        <td>{{ proyecto.presupuesto }}</td>
+                        <td><a href="{% url 'detail_cliente' pk=proyecto.cliente.id %}">{{ proyecto.cliente.nombre }}</a></td>
+                        <td><a href="{% url 'detail_empleado' pk=proyecto.responsable.id %}">{{ proyecto.responsable.nombre }} {{ proyecto.responsable.apellidos }}</a></td>
+                        <td>
+                            <a href="{% url 'edit_proyecto' pk=proyecto.id %}" class="btn-link">Editar</a>
+                            <a href="{% url 'delete_proyecto' pk=proyecto.id %}" class="btn-link btn-link-red">Borrar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; Inicio</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">&lsaquo; Anterior</a>
+                {% endif %}
 
-        {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">Siguiente &rsaquo;</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">Ultimo &raquo;</a>
-        {% endif %}
-    </span>
-</div>
-<div class="centrado">
-    <span class="current-page">
-        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
-    </span>
-</div>
-{% else %}
-<p>No hay proyectos creados.</p>
-{% endif %}
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">Siguiente &rsaquo;</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">Ultimo &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+        <div class="centrado">
+            <span class="current-page">
+                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+            </span>
+        </div>
+    {% else %}
+        <p>No hay proyectos creados.</p>
+    {% endif %}
 {% endblock %}

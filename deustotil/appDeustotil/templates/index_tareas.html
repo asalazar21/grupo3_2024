@@ -3,7 +3,7 @@
 {% block titulo %}Listado de tareas{% endblock %}
 
 {% block contenido %}
-    <h2>Listado de tarea</h2>
+    <h2>Listado de tareas</h2>
     <a href="{% url 'create_tareas' %}" class="create">Crear nueva tarea</a>
     {% if lista_tareas %}
         <table class="tablas">
@@ -41,7 +41,6 @@
                 {% endfor %}
             </tbody>
         </table>
-
         <div class="pagination">
             <span class="step-links">
                 {% if page_obj.has_previous %}
@@ -59,8 +58,7 @@
             <span class="current-page">
                 Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
             </span>
-        </div>  
-        
+        </div>         
     {% else %}
         <p>No hay tareas creados.</p>
     {% endif %}
