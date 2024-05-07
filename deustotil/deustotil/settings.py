@@ -121,6 +121,14 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR)]
 
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'grupo3@outlook.es'
+EMAIL_HOST_PASSWORD = 'Ingenieriaweb1234'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'grupo3@outlook.es'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

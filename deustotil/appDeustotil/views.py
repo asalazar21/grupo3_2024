@@ -4,6 +4,12 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView
 from django.views.generic.edit import CreateView
 from .forms import EmpleadoForm, ProyectoForm, TareaForm, ClienteForm
+from django.http import JsonResponse
+from django.views import View
+from django.core.paginator import Paginator
+from django.core.mail import EmailMessage
+from django.forms import model_to_dict
+
 
 
 
@@ -136,6 +142,26 @@ class ClienteListView(ListView):
     context_object_name = 'lista_clientes'
     paginate_by = 10
 
+class APIClienteDetailView(View):
+    def get(self, request, pk):
+        cliente = Cliente.objects.get(pk=pk)
+        return JsonResponse(model_to_dict(cliente))
+
+class APIClienteListView(View):
+    def get(self, request):
+        provList = Cliente.objects.all()
+        if ('nombre' in request.GET):
+            provList = Cliente.objects.filter(
+            nombre__contains=request.GET('nombre'))
+        else:
+            if('page' in request.GET):
+                paginator = Paginator(provList, 10)
+                result = paginator.get_page(request.GET["page"])
+                return JsonResponse(list(result.object_list.values()), safe=False)
+
+        return JsonResponse(list(provList.values()), safe=False)
+
+
 class ClienteDetailView(DetailView):
     model = Cliente
     template_name = 'cliente.html'
@@ -159,3 +185,23 @@ class ClienteUpdateView(UpdateView):
     template_name = 'appDeustotil/cliente_edit.html'
     success_url = reverse_lazy('index_clientes')
     fields = ['nombre','telefono','direccion']
+        
+
+class EnviarCorreoView(View):
+    def get(self, request):
+        # Renderiza el formulario para enviar el correo
+        return render(request, 'enviar_correo.html')
+
+    def post(self, request):
+        # Obtiene los datos del formulario
+        asunto = request.POST.get('asunto')
+        mensaje = request.POST.get('mensaje')
+        remitente = 'grupo5iw@outlook.es'
+        destinatarios = ['grupo5iw@outlook.es']
+
+        # Envía el correo electrónico
+        correo = EmailMessage(asunto, mensaje, remitente, destinatarios)
+        correo.send()
+
+        # Redirige a una página de confirmación o muestra un mensaje de éxito
+        return render(request, 'confirmar_correo.html')
