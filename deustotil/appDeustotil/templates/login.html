@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+    <title>{% block titulo %} Login {% endblock %}</title>
+</head>
+
+<body id="login-body">
+    <div id="login-form-wrap">
+        <h1>LOGIN</h1>
+        <form action="" method="post" id="login-form">
+            {% csrf_token %}
+            <div id="username">
+                <label>User: </label>
+                {{ form.username }}
+            </div>
+            <div id="password">
+                <label >Pass: </label>
+                {{ form.password }}
+            </div>
+            <button class="btn-link btn-link-login">Iniciar sesion</button>
+        </form>
+        <div class="error-container">
+            {% if form.errors %}
+                <div class="error-message">
+                    <p>El usuario o contraseña no son correctos. Por favor vuelve a intentarlo</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>
