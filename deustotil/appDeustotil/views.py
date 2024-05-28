@@ -87,9 +87,11 @@ class ProyectoCreateView(CreateView):
     template_name = 'proyecto_form.html'
     success_url = reverse_lazy('index_proyectos')    
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields['fecha_inicio'].widget.attrs['id'] = 'fecha_inicio'
+        form.fields['fecha_fin'].widget.attrs['id'] = 'fecha_fin'
+        return form
 
 class ProyectoUpdateView(UpdateView):
     model = Proyecto
@@ -142,24 +144,19 @@ class ClienteListView(ListView):
     context_object_name = 'lista_clientes'
     paginate_by = 10
 
-class APIClienteDetailView(View):
-    def get(self, request, pk):
-        cliente = Cliente.objects.get(pk=pk)
-        return JsonResponse(model_to_dict(cliente))
-
 class APIClienteListView(View):
     def get(self, request):
-        provList = Cliente.objects.all()
+        cliList = Cliente.objects.all()
         if ('nombre' in request.GET):
-            provList = Cliente.objects.filter(
+            cliList = Cliente.objects.filter(
             nombre__contains=request.GET('nombre'))
         else:
             if('page' in request.GET):
-                paginator = Paginator(provList, 10)
+                paginator = Paginator(cliList, 10)
                 result = paginator.get_page(request.GET["page"])
                 return JsonResponse(list(result.object_list.values()), safe=False)
 
-        return JsonResponse(list(provList.values()), safe=False)
+        return JsonResponse(list(cliList.values()), safe=False)
 
 
 class ClienteDetailView(DetailView):
@@ -196,8 +193,8 @@ class EnviarCorreoView(View):
         # Obtiene los datos del formulario
         asunto = request.POST.get('asunto')
         mensaje = request.POST.get('mensaje')
-        remitente = 'grupo5iw@outlook.es'
-        destinatarios = ['grupo5iw@outlook.es']
+        remitente = 'grupo3iw@outlook.es'
+        destinatarios = ['grupo3iw@outlook.es']
 
         # Envía el correo electrónico
         correo = EmailMessage(asunto, mensaje, remitente, destinatarios)
