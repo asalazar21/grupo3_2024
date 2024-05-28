@@ -28,6 +28,13 @@
                     <li class="nav-menu-item"><a href="{% url 'index_tareas' %}">Tareas</a></li>
                     <li class="nav-menu-item"><a href="{% url 'index_empleados' %}">Empleados</a></li>
                     <li class="nav-menu-item"><a href="{% url 'index_clientes' %}">Clientes</a></li>
+                    <li class="nav-menu-item"><a href="{% url 'correo' %}">Contactanos</a></li>
+                    <li class="nav-menu-item">
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-light" id="logout">DESCONECTAR</button>
+                        </form>
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -52,9 +59,9 @@
                         <li class="nav-menu-item"><a href="{% url 'index_clientes' %}">Clientes</a></li>
                     </ul>
                 </nav>
-                <p>&copy; Ingenieria Web 2024 - Grupo 3</p>
+                <p id="copy">&copy; Ingenieria Web 2024 - Grupo 3</p>
             </div>
-            <div>
+            <div class="contact-info">
                 <h3>Deustotil </h3>
                 <div>
                     <p>Calle La Paz , 33, 01001 Vitoria, Alava</p>
@@ -71,5 +78,7 @@
                 </div>
             </div>
         </footer>
+        <script src="{% static 'js/styles.js' %}"></script>
+        <script src="{% static 'js/fetchAPI.js' %}"></script>
     </body>
 </html>
