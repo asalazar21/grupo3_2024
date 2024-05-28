@@ -3,10 +3,16 @@
 {% block titulo %}Gestión de proyectos{% endblock %}
 
 {% block contenido %}
+    <div class="centrado">
+        <button id="increase" class="btn btn-warning">Aumentar tamaño</button>
+        <button id="decrease" class="btn btn-warning">Disminuir tamaño</button>
+    </div>
     <div class="title-container">
-        <div></div>
-        <h2>Listado de proyectos</h2>
-        <div class="title-container__btn">
+        <div class="title-container__btn-hide">
+            <button class="toggle-table btn btn-danger">Ocultar</button>
+        </div>
+        <h2 class="subheading">Listado de proyectos</h2>
+        <div class="title-container__btn-more">
             <a href="{% url 'index_proyectos' %}" class="btn btn-secondary">Ver más</a>
         </div>
     </div>
@@ -43,9 +49,11 @@
         <p>No hay proyectos creados.</p>
     {% endif %}
     <div class="title-container">
-        <div></div>
-        <h2>Listado de tareas</h2>
-        <div class="title-container__btn">
+        <div class="title-container__btn-hide">
+            <button class="toggle-table btn btn-danger">Ocultar</button>
+        </div>
+        <h2 class="subheading">Listado de tareas</h2>
+        <div class="title-container__btn-more">
             <a href="{% url 'index_tareas' %}" class="btn btn-secondary">Ver más</a>
         </div>
     </div>
@@ -86,9 +94,11 @@
         <p>No hay tareas creadas.</p>
     {% endif %}
     <div class="title-container">
-        <div></div>
-        <h2>Listado de empleados</h2>
-        <div class="title-container__btn">
+        <div class="title-container__btn-hide">
+            <button class="toggle-table btn btn-danger">Ocultar</button>
+        </div>
+        <h2 class="subheading">Listado de empleados</h2>
+        <div class="title-container__btn-more">
             <a href="{% url 'index_empleados' %}" class="btn btn-secondary">Ver más</a>
         </div>
     </div>
@@ -121,9 +131,11 @@
         <p>No hay empleados creados.</p>
     {% endif %}
     <div class="title-container">
-        <div></div>
-        <h2>Listado de clientes</h2>
-        <div class="title-container__btn">
+        <div class="title-container__btn-hide">
+            <button class="toggle-table btn btn-danger">Ocultar</button>
+        </div>
+        <h2 class="subheading">Listado de clientes</h2>
+        <div class="title-container__btn-more">
             <a href="{% url 'index_clientes' %}" class="btn btn-secondary">Ver más</a>
         </div>
     </div>
