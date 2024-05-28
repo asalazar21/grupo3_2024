@@ -3,10 +3,9 @@
 {% block titulo %}Confirmación correo{% endblock %}
 
 {% block contenido %}
-<div class="centrado">
-    <h3>El correo se ha enviado correctamente.</h3>
-    <br>
-    <a href="{% url 'index' %}" class="btn">Volver</a>
-</div>
-    
+    <div class="centrado">
+        <h3>El correo se ha enviado correctamente.</h3>
+        <br>
+        <a href="{% url 'index' %}" class="btn btn-secondary">Volver</a>
+    </div> 
 {% endblock %}
