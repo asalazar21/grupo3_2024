@@ -19,12 +19,17 @@ Bienvenido a nuestra aplicación de organización y planificación de proyectos.
 - `Funcionalidad 2`: Creación, visualización (listado y detalle), modificación y baja de tareas.
 - `Funcionalidad 3`: Creación, visualización (listado y detalle), modificación y baja de empleados.
 - `Funcionalidad 4`: Creación, visualización (listado y detalle), modificación y baja de clientes.
+- `Funcionalidad 5`: Aumento / Disminución tamaño texto tablas mediante JavaScript en index.html.
+- `Funcionalidad 6`: Ocultar / Expandir tablas mediante JavaScript en index.html.
+- `Funcionalidad 7`: Validación mediante JavaScript de campos fecha inicio y fecha fin del modelo proyectos a la hora de crear nuevos proyectos.
+- `Funcionalidad 8`: Mostrado de datos cliente obtenidos desde API con fetch.
 
 ## :white_check_mark: Tecnologías utilizadas
 - Python
 - Django
 - HTML
 - CSS
+- JavaScript
 
 ## 🛠️ Dependencias
 > **Esta aplicación se ha creado utilizando Django 4.2 y se ha incluido un archivo "pip freeze.txt" con las dependencias necesarias para ejecutar la aplicación.**
